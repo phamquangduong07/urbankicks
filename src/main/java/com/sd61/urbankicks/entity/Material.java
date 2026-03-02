@@ -19,15 +19,12 @@ public class Material extends BaseEntity {
     @Column(name = "id", nullable = false)
     private UUID id;
 
-    @Size(max = 255)
-    @NotNull
-    @Column(name = "code", nullable = false)
-    private String code;
+
 
     @Size(max = 255)
     @NotNull
     @Nationalized
-    @Column(name = "name", nullable = false)
+    @Column(name = "name", nullable = false,unique = true)
     private String name;
 
     @NotNull

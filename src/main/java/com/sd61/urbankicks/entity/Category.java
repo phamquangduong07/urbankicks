@@ -3,8 +3,7 @@ package com.sd61.urbankicks.entity;
 import jakarta.persistence.*;
 import jakarta.validation.constraints.NotNull;
 import jakarta.validation.constraints.Size;
-import lombok.Getter;
-import lombok.Setter;
+import lombok.*;
 import org.hibernate.annotations.Nationalized;
 
 import java.util.UUID;
@@ -13,6 +12,9 @@ import java.util.UUID;
 @Setter
 @Entity
 @Table(name = "categories")
+@Builder
+@AllArgsConstructor
+@NoArgsConstructor
 public class Category extends BaseEntity {
     @Id
     @GeneratedValue(strategy = GenerationType.UUID)
@@ -22,12 +24,10 @@ public class Category extends BaseEntity {
     @Size(max = 255)
     @NotNull
     @Nationalized
-    @Column(name = "name", nullable = false)
+    @Column(name = "name", nullable = false, unique = true)
     private String name;
 
     @NotNull
     @Column(name = "status", nullable = false)
     private Integer status;
-
-
 }
