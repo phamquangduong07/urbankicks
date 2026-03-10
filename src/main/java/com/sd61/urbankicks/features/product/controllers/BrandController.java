@@ -1,7 +1,7 @@
 package com.sd61.urbankicks.features.product.controllers;
 
 import com.sd61.urbankicks.entity.Brand;
-import com.sd61.urbankicks.features.product.dtos.BrandDTO;
+import com.sd61.urbankicks.features.product.dtos.requests.BrandRequest;
 import com.sd61.urbankicks.features.product.services.IBrandService;
 import com.sd61.urbankicks.responses.ResponseData;
 import com.sd61.urbankicks.utils.ResponseUtil;
@@ -27,7 +27,7 @@ public class BrandController {
 
     @PostMapping("")
     public ResponseEntity<ResponseData<Brand>> createBrand(
-            @Valid @RequestBody BrandDTO brandDTO
+            @Valid @RequestBody BrandRequest brandDTO
     ){
         return  ResponseUtil.success(brandService.createBrand(brandDTO),"Create Success",HttpStatus.CREATED);
     }
@@ -44,7 +44,7 @@ public class BrandController {
     @PutMapping("/{id}")
     public ResponseEntity<ResponseData<Brand>> updateBrand(
             @PathVariable("id") UUID brandId,
-            @Valid @RequestBody BrandDTO brandDTO
+            @Valid @RequestBody BrandRequest brandDTO
     ){
         return  ResponseUtil.success(
                 brandService.updateBrand(brandId,brandDTO),

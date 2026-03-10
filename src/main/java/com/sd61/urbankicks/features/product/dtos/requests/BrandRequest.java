@@ -1,4 +1,4 @@
-package com.sd61.urbankicks.features.product.dtos;
+package com.sd61.urbankicks.features.product.dtos.requests;
 
 import jakarta.validation.constraints.NotBlank;
 import jakarta.validation.constraints.NotNull;
@@ -10,7 +10,7 @@ import lombok.*;
 @Setter
 @AllArgsConstructor
 @NoArgsConstructor
-public class BrandDTO {
+public class BrandRequest {
     @NotBlank(message = "Tên thương hiệu không được để trống")
     @Size(max = 255, message = "Tên thương hiệu tối đa 255 ký tự")
     private String name;

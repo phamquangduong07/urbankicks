@@ -1,7 +1,6 @@
 package com.sd61.urbankicks.entity;
 
 import jakarta.persistence.*;
-import jakarta.validation.constraints.NotNull;
 import jakarta.validation.constraints.Size;
 import lombok.Getter;
 import lombok.Setter;
@@ -30,12 +29,10 @@ public class Notification {
     private Order order;
 
     @Size(max = 255)
-    @NotNull
     @Nationalized
     @Column(name = "content", nullable = false)
     private String content;
 
-    @NotNull
     @Column(name = "status", nullable = false)
     private Integer status;
 

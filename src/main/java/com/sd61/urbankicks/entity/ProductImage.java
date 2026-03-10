@@ -1,11 +1,8 @@
 package com.sd61.urbankicks.entity;
 
 import jakarta.persistence.*;
-import jakarta.validation.constraints.NotNull;
 import jakarta.validation.constraints.Size;
-import lombok.Getter;
-import lombok.Setter;
-import org.hibernate.annotations.ColumnDefault;
+import lombok.*;
 import org.hibernate.annotations.Nationalized;
 
 import java.util.UUID;
@@ -14,27 +11,31 @@ import java.util.UUID;
 @Setter
 @Entity
 @Table(name = "product_images")
+@Builder
+@AllArgsConstructor
+@NoArgsConstructor
 public class ProductImage extends BaseEntity {
+    public static final int MAXIMUM_IMAGES_PER_PRODUCT = 5;
     @Id
     @GeneratedValue(strategy = GenerationType.UUID)
-    @Column(name = "id", nullable = false)
+    @Column(name = "id")
     private UUID id;
 
-    @NotNull
-    @ColumnDefault("0")
-    @Column(name = "is_thumbnail", nullable = false)
-    private Boolean isThumbnail;
 
-    @NotNull
     @ManyToOne(fetch = FetchType.LAZY, optional = false)
-    @JoinColumn(name = "product_variant_id", nullable = false)
-    private ProductVariant productVariant;
+    @JoinColumn(name = "product_id")
+    private Product productId;
+
+
+    @ManyToOne(fetch = FetchType.LAZY, optional = false)
+    @JoinColumn(name = "color_id")
+    private Color colorId;
 
     @Size(max = 500)
-    @NotNull
     @Nationalized
-    @Column(name = "image_url", nullable = false, length = 500)
+    @Column(name = "image_url", length = 500)
     private String imageUrl;
 
+    private Boolean isThumbnail;
 
 }

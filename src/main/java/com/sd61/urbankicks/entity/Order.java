@@ -1,7 +1,6 @@
 package com.sd61.urbankicks.entity;
 
 import jakarta.persistence.*;
-import jakarta.validation.constraints.NotNull;
 import jakarta.validation.constraints.Size;
 import lombok.Getter;
 import lombok.Setter;
@@ -22,7 +21,6 @@ public class Order extends BaseEntity {
     private UUID id;
 
     @Size(max = 100)
-    @NotNull
     @Column(name = "order_code", nullable = false, length = 100)
     private String orderCode;
 
@@ -31,13 +29,11 @@ public class Order extends BaseEntity {
     private User customer;
 
     @Size(max = 100)
-    @NotNull
     @Nationalized
     @Column(name = "receiver_name", nullable = false, length = 100)
     private String receiverName;
 
     @Size(max = 20)
-    @NotNull
     @Nationalized
     @Column(name = "phone", nullable = false, length = 20)
     private String phone;
@@ -48,12 +44,10 @@ public class Order extends BaseEntity {
     private String email;
 
     @Size(max = 500)
-    @NotNull
     @Nationalized
     @Column(name = "shipping_address", nullable = false, length = 500)
     private String shippingAddress;
 
-    @NotNull
     @Column(name = "subtotal", nullable = false, precision = 18, scale = 2)
     private BigDecimal subtotal;
 
@@ -65,7 +59,7 @@ public class Order extends BaseEntity {
     @Column(name = "shipping_fee", precision = 18, scale = 2)
     private BigDecimal shippingFee;
 
-    @NotNull
+
     @Column(name = "total_amount", nullable = false, precision = 18, scale = 2)
     private BigDecimal totalAmount;
 
@@ -73,11 +67,11 @@ public class Order extends BaseEntity {
     @JoinColumn(name = "voucher_id")
     private Voucher voucher;
 
-    @NotNull
+
     @Column(name = "order_type", nullable = false)
     private Integer orderType;
 
-    @NotNull
+
     @Column(name = "status", nullable = false)
     private Integer status;
 

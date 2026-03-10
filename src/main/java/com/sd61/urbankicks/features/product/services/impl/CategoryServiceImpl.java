@@ -3,7 +3,7 @@ package com.sd61.urbankicks.features.product.services.impl;
 import com.sd61.urbankicks.entity.Category;
 import com.sd61.urbankicks.exceptions.DataNotFoundException;
 import com.sd61.urbankicks.exceptions.DuplicateResourceException;
-import com.sd61.urbankicks.features.product.dtos.CategoryDTO;
+import com.sd61.urbankicks.features.product.dtos.requests.CategoryRequest;
 import com.sd61.urbankicks.features.product.repositories.CategoryRepository;
 import com.sd61.urbankicks.features.product.services.ICategoryService;
 import lombok.RequiredArgsConstructor;
@@ -13,7 +13,7 @@ import java.util.List;
 import java.util.UUID;
 @Service
 @RequiredArgsConstructor
-public class CategoryService implements ICategoryService {
+public class CategoryServiceImpl implements ICategoryService {
     private final CategoryRepository categoryRepository;
     @Override
     public List<Category> getAllCategories() {
@@ -21,7 +21,7 @@ public class CategoryService implements ICategoryService {
     }
 
     @Override
-    public Category createCategory(CategoryDTO categoryDTO) {
+    public Category createCategory(CategoryRequest categoryDTO) {
         if(categoryRepository.existsCategoryByNameIgnoreCase(categoryDTO.getName())){
             throw new DuplicateResourceException("Tên danh mục đã tồn tại");
         }
@@ -33,7 +33,7 @@ public class CategoryService implements ICategoryService {
     }
 
     @Override
-    public Category updateCategory(UUID id, CategoryDTO categoryDTO) {
+    public Category updateCategory(UUID id, CategoryRequest categoryDTO) {
         Category existingCategory = getCategoryById(id);
 
         existingCategory.setName(categoryDTO.getName());

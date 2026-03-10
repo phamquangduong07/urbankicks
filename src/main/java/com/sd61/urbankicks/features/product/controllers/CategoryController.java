@@ -1,7 +1,7 @@
 package com.sd61.urbankicks.features.product.controllers;
 
 import com.sd61.urbankicks.entity.Category;
-import com.sd61.urbankicks.features.product.dtos.CategoryDTO;
+import com.sd61.urbankicks.features.product.dtos.requests.CategoryRequest;
 import com.sd61.urbankicks.features.product.services.ICategoryService;
 import com.sd61.urbankicks.responses.ResponseData;
 import com.sd61.urbankicks.utils.ResponseUtil;
@@ -29,7 +29,7 @@ public class CategoryController {
 
     @PostMapping("")
     public ResponseEntity<ResponseData<Category>> createCategory(
-            @Valid  @RequestBody CategoryDTO categoryDTO
+            @Valid  @RequestBody CategoryRequest categoryDTO
     ){
     return  ResponseUtil.success(categoryService.createCategory(categoryDTO),"Create Success",HttpStatus.CREATED);
     }
@@ -46,7 +46,7 @@ public class CategoryController {
     @PutMapping("/{id}")
     public ResponseEntity<ResponseData<Category>> updateCategory(
             @PathVariable("id") UUID categoryId,
-            @Valid @RequestBody CategoryDTO categoryDTO
+            @Valid @RequestBody CategoryRequest categoryDTO
     ){
         return  ResponseUtil.success(
                 categoryService.updateCategory(categoryId,categoryDTO),

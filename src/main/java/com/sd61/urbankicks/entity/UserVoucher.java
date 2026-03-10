@@ -1,7 +1,6 @@
 package com.sd61.urbankicks.entity;
 
 import jakarta.persistence.*;
-import jakarta.validation.constraints.NotNull;
 import lombok.Getter;
 import lombok.Setter;
 
@@ -18,12 +17,12 @@ public class UserVoucher extends BaseEntity {
     @Column(name = "id", nullable = false)
     private UUID id;
 
-    @NotNull
+
     @ManyToOne(fetch = FetchType.LAZY, optional = false)
     @JoinColumn(name = "customer_id", nullable = false)
     private User customer;
 
-    @NotNull
+
     @ManyToOne(fetch = FetchType.LAZY, optional = false)
     @JoinColumn(name = "voucher_id", nullable = false)
     private Voucher voucher;
@@ -31,7 +30,6 @@ public class UserVoucher extends BaseEntity {
     @Column(name = "used_at")
     private Instant usedAt;
 
-    @NotNull
     @Column(name = "status", nullable = false)
     private Integer status;
 

@@ -1,7 +1,6 @@
 package com.sd61.urbankicks.entity;
 
 import jakarta.persistence.*;
-import jakarta.validation.constraints.NotNull;
 import lombok.Getter;
 import lombok.Setter;
 
@@ -21,7 +20,7 @@ public class Cart extends BaseEntity {
     @JoinColumn(name = "customer_id")
     private User customer;
 
-    @NotNull
+
     @Column(name = "status", nullable = false)
     private Integer status;
 

@@ -1,7 +1,6 @@
 package com.sd61.urbankicks.entity;
 
 import jakarta.persistence.*;
-import jakarta.validation.constraints.NotNull;
 import jakarta.validation.constraints.Size;
 import lombok.Getter;
 import lombok.Setter;
@@ -21,12 +20,10 @@ public class OrderStatusHistory {
     @Column(name = "id", nullable = false)
     private UUID id;
 
-    @NotNull
     @ManyToOne(fetch = FetchType.LAZY, optional = false)
     @JoinColumn(name = "order_id", nullable = false)
     private Order order;
 
-    @NotNull
     @Column(name = "status", nullable = false)
     private Integer status;
 

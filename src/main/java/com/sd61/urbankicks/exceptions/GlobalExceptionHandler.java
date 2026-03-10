@@ -22,13 +22,16 @@ public class GlobalExceptionHandler {
         Map<String, String> errors = new HashMap<>();
 
         ex.getBindingResult().getFieldErrors()
-                .forEach(err -> errors.put(err.getField(), err.getDefaultMessage()));
+                .forEach(err -> errors.put(toSnakeCase(err.getField()), err.getDefaultMessage()));
 
         return ResponseUtil.error(
                 "Validation failed",
                 HttpStatus.BAD_REQUEST,
                 errors
         );
+    }
+    private String toSnakeCase(String input) {
+        return input.replaceAll("([a-z])([A-Z])", "$1_$2").toLowerCase();
     }
     @ExceptionHandler(DataNotFoundException.class)
     public ResponseEntity<ResponseData<?>> handleNotFound(
@@ -61,4 +64,5 @@ public class GlobalExceptionHandler {
                 ex.getErrors()
         );
     }
+
 }

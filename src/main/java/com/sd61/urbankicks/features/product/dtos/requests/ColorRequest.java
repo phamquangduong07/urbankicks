@@ -1,4 +1,4 @@
-package com.sd61.urbankicks.features.product.dtos;
+package com.sd61.urbankicks.features.product.dtos.requests;
 
 import com.fasterxml.jackson.annotation.JsonProperty;
 import jakarta.validation.constraints.NotBlank;
@@ -12,7 +12,7 @@ import lombok.*;
 @Setter
 @AllArgsConstructor
 @NoArgsConstructor
-public class ColorDTO {
+public class ColorRequest {
     @NotBlank(message = "Màu không được để trống")
     @Size(max = 255, message = "Tên màu tối đa 255 ký tự")
     private String name;

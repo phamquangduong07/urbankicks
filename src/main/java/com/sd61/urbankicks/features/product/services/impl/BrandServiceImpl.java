@@ -3,7 +3,7 @@ package com.sd61.urbankicks.features.product.services.impl;
 import com.sd61.urbankicks.entity.Brand;
 import com.sd61.urbankicks.exceptions.DataNotFoundException;
 import com.sd61.urbankicks.exceptions.DuplicateResourceException;
-import com.sd61.urbankicks.features.product.dtos.BrandDTO;
+import com.sd61.urbankicks.features.product.dtos.requests.BrandRequest;
 import com.sd61.urbankicks.features.product.repositories.BrandRepository;
 import com.sd61.urbankicks.features.product.services.IBrandService;
 import lombok.RequiredArgsConstructor;
@@ -14,7 +14,7 @@ import java.util.UUID;
 
 @Service
 @RequiredArgsConstructor
-public class BrandService implements IBrandService {
+public class BrandServiceImpl implements IBrandService {
     private final BrandRepository brandRepository;
 
     @Override
@@ -23,7 +23,7 @@ public class BrandService implements IBrandService {
     }
 
     @Override
-    public Brand createBrand(BrandDTO brandDTO) {
+    public Brand createBrand(BrandRequest brandDTO) {
         if(brandRepository.existsBrandByNameIgnoreCase(brandDTO.getName())){
             throw new DuplicateResourceException("Tên thương hiệu đã tồn tại");
         }
@@ -35,7 +35,7 @@ public class BrandService implements IBrandService {
     }
 
     @Override
-    public Brand updateBrand(UUID id, BrandDTO brandDTO) {
+    public Brand updateBrand(UUID id, BrandRequest brandDTO) {
         Brand existingBrand = getBrandById(id);
         if(brandRepository.existsBrandByNameIgnoreCaseAndIdNot(brandDTO.getName(),id)){
             throw new DuplicateResourceException("Tên thương hiệu đã tồn tại");

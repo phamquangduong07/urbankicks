@@ -19,12 +19,12 @@ public class CartItem extends BaseEntity {
     @Column(name = "id", nullable = false)
     private UUID id;
 
-    @NotNull
+
     @ManyToOne(fetch = FetchType.LAZY, optional = false)
     @JoinColumn(name = "cart_id", nullable = false)
     private Cart cart;
 
-    @NotNull
+
     @ManyToOne(fetch = FetchType.LAZY, optional = false)
     @JoinColumn(name = "product_variant_id", nullable = false)
     private ProductVariant productVariant;
@@ -33,7 +33,7 @@ public class CartItem extends BaseEntity {
     @Column(name = "quantity", nullable = false)
     private Integer quantity;
 
-    @NotNull
+
     @Column(name = "unit_price", nullable = false, precision = 18, scale = 2)
     private BigDecimal unitPrice;
 

@@ -6,7 +6,13 @@ spring:
     username: sa
     password: 28102003
     driver-class-name: com.microsoft.sqlserver.jdbc.SQLServerDriver
-
+  jackson:
+    property-naming-strategy: SNAKE_CASE
+  web:
+    resources:
+      static-locations:
+        - classpath:/static/
+        - file:uploads/
   jpa:
     hibernate:
     ddl-auto: none
@@ -21,3 +27,6 @@ server:
 
 api:
   prefix: /api/v1
+
+file:
+  upload-dir: uploads

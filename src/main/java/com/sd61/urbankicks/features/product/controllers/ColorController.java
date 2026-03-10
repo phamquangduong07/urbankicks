@@ -1,7 +1,7 @@
 package com.sd61.urbankicks.features.product.controllers;
 
 import com.sd61.urbankicks.entity.Color;
-import com.sd61.urbankicks.features.product.dtos.ColorDTO;
+import com.sd61.urbankicks.features.product.dtos.requests.ColorRequest;
 import com.sd61.urbankicks.features.product.services.IColorService;
 import com.sd61.urbankicks.responses.ResponseData;
 import com.sd61.urbankicks.utils.ResponseUtil;
@@ -22,7 +22,7 @@ public class ColorController {
     private final IColorService colorService;
     @PostMapping
     public ResponseEntity<ResponseData<Color>> create(
-            @Valid @RequestBody ColorDTO dto
+            @Valid @RequestBody ColorRequest dto
     ) {
         return ResponseUtil.success(
                 colorService.createColor(dto),
@@ -54,7 +54,7 @@ public class ColorController {
     @PutMapping("/{id}")
     public ResponseEntity<ResponseData<Color>> update(
             @PathVariable UUID id,
-            @Valid @RequestBody ColorDTO dto
+            @Valid @RequestBody ColorRequest dto
     ) {
         return ResponseUtil.success(
                 colorService.updateColor(id, dto),

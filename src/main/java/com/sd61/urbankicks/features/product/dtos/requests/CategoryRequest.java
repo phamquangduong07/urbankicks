@@ -1,7 +1,6 @@
-package com.sd61.urbankicks.features.product.dtos;
+package com.sd61.urbankicks.features.product.dtos.requests;
 
 import jakarta.validation.constraints.NotBlank;
-
 import jakarta.validation.constraints.NotNull;
 import jakarta.validation.constraints.Size;
 import lombok.*;
@@ -13,7 +12,7 @@ import lombok.*;
 @Setter
 @AllArgsConstructor
 @NoArgsConstructor
-public class CategoryDTO {
+public class CategoryRequest {
     @NotBlank(message = "Tên danh mục không được để trống")
     @Size(max = 255, message = "Tên danh mục tối đa 255 ký tự")
     private String name;

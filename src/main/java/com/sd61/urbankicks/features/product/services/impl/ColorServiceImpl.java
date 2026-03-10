@@ -2,7 +2,7 @@ package com.sd61.urbankicks.features.product.services.impl;
 
 import com.sd61.urbankicks.entity.Color;
 import com.sd61.urbankicks.exceptions.DataNotFoundException;
-import com.sd61.urbankicks.features.product.dtos.ColorDTO;
+import com.sd61.urbankicks.features.product.dtos.requests.ColorRequest;
 import com.sd61.urbankicks.features.product.repositories.ColorRepository;
 import com.sd61.urbankicks.features.product.services.IColorService;
 import com.sd61.urbankicks.utils.ValidationCollector;
@@ -14,11 +14,11 @@ import java.util.UUID;
 
 @Service
 @RequiredArgsConstructor
-public class ColorService implements IColorService {
+public class ColorServiceImpl implements IColorService {
     private final ColorRepository colorRepository;
 
     @Override
-    public Color createColor(ColorDTO dto) {
+    public Color createColor(ColorRequest dto) {
         ValidationCollector validator = new ValidationCollector();
 
         validator
@@ -54,7 +54,7 @@ public class ColorService implements IColorService {
     }
 
     @Override
-    public Color updateColor(UUID id, ColorDTO dto) {
+    public Color updateColor(UUID id, ColorRequest dto) {
         Color existing = getColorById(id);
 
         ValidationCollector validator = new ValidationCollector();
